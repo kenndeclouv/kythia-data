@@ -14,6 +14,8 @@ import {
   SidebarMenuItem,
 } from "../ui/sidebar";
 
+import kythiaAppLogo from "../../assets/kythia-app-logo.webp";
+
 interface SidebarProps {
   onCreateConnection: () => void;
 }
@@ -32,7 +34,7 @@ export default function Sidebar({ onCreateConnection }: SidebarProps) {
     <ShadcnSidebar>
       <SidebarHeader className="p-4 border-b border-border/50">
         <div className="flex items-center">
-          <img src="/logo.webp" alt="Kythia Logo" className="w-8 h-8 rounded-md mr-3 shadow-lg shrink-0" />
+          <img src={kythiaAppLogo} alt="Kythia Logo" className="w-8 h-8 mr-3 shrink-0" />
           <div className="flex flex-col">
             <h2 className="text-sm font-semibold tracking-wide text-foreground">KYTHIA</h2>
             <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold mt-0.5">Data</div>

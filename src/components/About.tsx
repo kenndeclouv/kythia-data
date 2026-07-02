@@ -1,6 +1,7 @@
 import { getVersion } from '@tauri-apps/api/app';
 import { useEffect, useState } from 'react';
 import kythiaLogo from '../assets/kythia-app-logo.webp';
+import { openUrl } from '@tauri-apps/plugin-opener';
 
 export function About() {
   const [version, setVersion] = useState<string>('0.1.0');
@@ -38,9 +39,9 @@ export function About() {
           <div className="border-t pt-6 flex flex-col space-y-2">
             <p className="text-foreground font-semibold">Useful links</p>
             <div className="flex flex-col space-y-1">
-              <a href="https://kenndeclouv.com" target="_blank" className="text-primary hover:text-primary/80 transition-color duration-200">kenndeclouv.com</a>
-              <a href="https://github.com/kenndeclouv" target="_blank" className="text-primary hover:text-primary/80 transition-color duration-200">github</a>
-              <a href="https://github.com/kenndeclouv/kythia-data" target="_blank" className="text-primary hover:text-primary/80 transition-color duration-200">view source</a>
+              <span onClick={() => openUrl('https://kenndeclouv.com')} className="text-primary hover:text-primary/80 transition-color duration-200 cursor-pointer">kenndeclouv.com</span>
+              <span onClick={() => openUrl('https://github.com/kenndeclouv')} className="text-primary hover:text-primary/80 transition-color duration-200 cursor-pointer">github</span>
+              <span onClick={() => openUrl('https://github.com/kenndeclouv/kythia-data')} className="text-primary hover:text-primary/80 transition-color duration-200 cursor-pointer">view source</span>
             </div>
           </div>
         </section>

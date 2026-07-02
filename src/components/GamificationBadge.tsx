@@ -1,9 +1,11 @@
 import React from 'react';
 import { useGamification } from '../hooks/useGamification';
 import { Coins, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const GamificationBadge: React.FC = () => {
   const { data, loading } = useGamification();
+  const navigate = useNavigate();
 
   if (loading) return null;
 
@@ -12,7 +14,7 @@ export const GamificationBadge: React.FC = () => {
   const progressPercentage = Math.min((data.current_xp / xpNeededForNext) * 100, 100);
 
   return (
-    <div className="flex items-center gap-4 bg-card/50 backdrop-blur-md px-4 py-2 rounded-lg border border-border/50 shadow-lg transition-all duration-300 hover:border-indigo-500/30">
+    <div className="flex items-center gap-4 bg-card/50 backdrop-blur-md px-4 py-2 rounded-lg border border-border/50 shadow-lg transition-all duration-300 ">
       
       {/* Level & XP section */}
       <div className="flex flex-col gap-1 w-32">
@@ -37,7 +39,7 @@ export const GamificationBadge: React.FC = () => {
       <div className="w-px h-6 bg-border" />
 
       {/* Coins section */}
-      <div className="flex items-center gap-2 group cursor-pointer" title="Kythia Coins">
+      <div className="flex items-center gap-2 group cursor-pointer" onClick={() => navigate('/shop')}>
         <div className="bg-amber-500/10 p-1.5 rounded-full group-hover:scale-110 transition-transform">
           <Coins size={14} className="text-amber-500" />
         </div>
