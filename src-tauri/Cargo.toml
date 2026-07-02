@@ -1,7 +1,7 @@
 [package]
 name = "kythia-data"
-version = "0.1.0"
-description = "A Tauri App"
+version = "0.1.1"
+description = "Kythia Data is a modern, ultra-lightweight database client built as a sleek alternative to bloated, heavy tools like DBeaver, DataGrip, or web-based legacy tools like phpMyAdmin."
 authors = ["you"]
 edition = "2021"
 

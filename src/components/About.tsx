@@ -15,7 +15,7 @@ export function About() {
 
       <div className="space-y-12 pb-10">
         <section>
-          <img src={kythiaLogo} alt="Kythia Logo" className="w-[128px] h-[128px] shadow-md mb-4" />
+          <img src={kythiaLogo} alt="Kythia Logo" className="w-[128px] h-[128px] mb-4" />
           
           <div className="flex items-center gap-4">
             <div>

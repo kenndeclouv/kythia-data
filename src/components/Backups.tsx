@@ -103,8 +103,8 @@ export function Backups() {
       <div className="max-w-5xl mx-auto w-full">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-100">Data Backups</h1>
-            <p className="text-zinc-400 mt-2">Manage your connections, settings, and gamification data.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Data Backups</h1>
+            <p className="text-muted-foreground mt-2">Manage your connections, settings, and gamification data.</p>
           </div>
           <Button onClick={handleCreateBackup} disabled={isCreating} className="bg-primary/90 hover:bg-primary text-primary-foreground font-medium rounded-lg px-6 py-5 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_30px_rgba(var(--primary),0.5)]">
             {isCreating ? (
@@ -117,8 +117,8 @@ export function Backups() {
         </div>
 
         <div className="flex-1 overflow-y-auto pb-10 custom-scrollbar mt-8">
-          <div className="bg-[#141414] text-zinc-300 rounded-2xl border border-zinc-800/60 shadow-sm overflow-hidden">
-            <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-zinc-800/60 bg-white/[0.02] font-semibold text-sm text-zinc-500">
+          <div className="bg-card dark:bg-[#141414] text-card-foreground rounded-2xl border border-border/50 dark:border-zinc-800/60 shadow-sm overflow-hidden">
+            <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-border/50 dark:border-zinc-800/60 bg-secondary/30 dark:bg-white/[0.02] font-semibold text-sm text-muted-foreground">
               <div className="col-span-4">Backup Name</div>
               <div className="col-span-4">Date Created</div>
               <div className="col-span-3">Size</div>
@@ -126,20 +126,20 @@ export function Backups() {
             </div>
             
             {isLoading ? (
-              <div className="py-16 flex flex-col items-center justify-center text-center text-zinc-500">
+              <div className="py-16 flex flex-col items-center justify-center text-center text-muted-foreground">
                 <RefreshCw className="h-8 w-8 animate-spin mb-4 opacity-50" />
-                <p className="text-lg font-medium text-zinc-300">Loading backups...</p>
+                <p className="text-lg font-medium text-foreground">Loading backups...</p>
               </div>
             ) : backups.length > 0 ? backups.map((backup) => (
-              <div key={backup.id} className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-zinc-800/40 hover:bg-[#1a1a1a] transition-colors items-center text-sm group">
-                <div className="col-span-4 font-medium flex items-center gap-2 text-zinc-300">
+              <div key={backup.id} className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-border/10 dark:border-zinc-800/40 hover:bg-accent/50 dark:hover:bg-[#1a1a1a] transition-colors items-center text-sm group">
+                <div className="col-span-4 font-medium flex items-center gap-2 text-foreground">
                   <Archive className="w-4 h-4 text-primary" />
                   {backup.id}
                 </div>
-                <div className="col-span-4 text-zinc-400">
+                <div className="col-span-4 text-muted-foreground">
                   {format(new Date(backup.created_at * 1000), 'PPP p')}
                 </div>
-                <div className="col-span-3 font-mono text-xs opacity-70 text-zinc-400">
+                <div className="col-span-3 font-mono text-xs opacity-70 text-muted-foreground">
                   {formatBytes(backup.size)}
                 </div>
                 <div className="col-span-1 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
@@ -172,9 +172,9 @@ export function Backups() {
                 </div>
               </div>
             )) : (
-              <div className="py-16 flex flex-col items-center justify-center text-center text-zinc-500">
+              <div className="py-16 flex flex-col items-center justify-center text-center text-muted-foreground">
                 <Archive className="w-12 h-12 mb-4 opacity-30" />
-                <p className="text-lg font-medium text-zinc-300">No Backups Yet</p>
+                <p className="text-lg font-medium text-foreground">No Backups Yet</p>
                 <p className="text-sm mt-1 max-w-md">
                   You haven't created any backups yet. Click the Create Backup button to save your current state.
                 </p>

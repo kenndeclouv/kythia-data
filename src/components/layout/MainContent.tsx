@@ -152,25 +152,25 @@ export default function MainContent({ onCreateConnection }: MainContentProps) {
           </div>
 
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search connections by name, host, or tag..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#1a1a1a] border border-zinc-800/80 hover:border-zinc-700 text-sm rounded-xl pl-12 pr-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-red-500/50 transition-all placeholder:text-zinc-600 shadow-sm"
+              className="w-full bg-secondary/50 dark:bg-[#1a1a1a] border border-border/50 dark:border-zinc-800/80 hover:border-border dark:hover:border-zinc-700 text-sm rounded-xl pl-12 pr-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-muted-foreground shadow-sm text-foreground"
             />
           </div>
         </div>
 
         {/* List Section */}
         {connections.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 border border-dashed border-zinc-800/50 rounded-2xl bg-[#141414]/50">
-            <div className="w-16 h-16 bg-[#1a1a1a] border border-zinc-800/80 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
-              <Database className="w-8 h-8 text-zinc-500" />
+          <div className="flex flex-col items-center justify-center py-20 border border-dashed border-border/50 dark:border-zinc-800/50 rounded-2xl bg-card/50 dark:bg-[#141414]/50">
+            <div className="w-16 h-16 bg-secondary/30 dark:bg-[#1a1a1a] border border-border/50 dark:border-zinc-800/80 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+              <Database className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h2 className="text-xl font-semibold text-white mb-2">No Connections</h2>
-            <p className="text-zinc-500 text-sm text-center max-w-sm mb-6">
+            <h2 className="text-xl font-semibold text-foreground mb-2">No Connections</h2>
+            <p className="text-muted-foreground text-sm text-center max-w-sm mb-6">
               You haven't added any databases yet. Create your first connection to get started.
             </p>
             <Button onClick={onCreateConnection} className="bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-900/20 rounded-lg">
@@ -180,9 +180,9 @@ export default function MainContent({ onCreateConnection }: MainContentProps) {
           </div>
         ) : filteredConnections.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <Search className="w-10 h-10 text-zinc-700 mb-4" />
-            <h3 className="text-lg font-medium text-zinc-300">No matches found</h3>
-            <p className="text-zinc-500">We couldn't find anything matching "{searchTerm}"</p>
+            <Search className="w-10 h-10 text-muted-foreground/50 mb-4" />
+            <h3 className="text-lg font-medium text-foreground">No matches found</h3>
+            <p className="text-muted-foreground">We couldn't find anything matching "{searchTerm}"</p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
@@ -190,28 +190,28 @@ export default function MainContent({ onCreateConnection }: MainContentProps) {
               <ContextMenu key={i}>
                 <ContextMenuTrigger>
                   <div
-                    className="group flex items-center justify-between p-4 bg-[#141414] hover:bg-[#1a1a1a] border border-zinc-800/60 hover:border-zinc-700 rounded-xl cursor-pointer transition-all duration-200"
+                    className="group flex items-center justify-between p-4 bg-card dark:bg-[#141414] hover:bg-accent/50 dark:hover:bg-[#1a1a1a] border border-border/50 dark:border-zinc-800/60 hover:border-border dark:hover:border-zinc-700 rounded-xl cursor-pointer transition-all duration-200"
                     onDoubleClick={() => handleOpenWorkspace(i)}
                   >
                     <div className="flex items-center gap-5">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${conn.color ? `${conn.color} text-white` : "bg-zinc-800/50 text-zinc-400"
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${conn.color ? `${conn.color} text-white` : "bg-secondary dark:bg-zinc-800/50 text-muted-foreground"
                         }`}>
                         <Server className="w-6 h-6" />
                       </div>
 
                       <div className="flex flex-col">
                         <div className="flex items-center gap-3">
-                          <h3 className="font-semibold text-base text-zinc-200 group-hover:text-white transition-colors">
+                          <h3 className="font-semibold text-base text-foreground transition-colors">
                             {conn.name || conn.host}
                           </h3>
                           {conn.tag && (
-                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-zinc-800/80 text-zinc-400 border border-zinc-700/50">
+                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-secondary dark:bg-zinc-800/80 text-muted-foreground border border-border/50 dark:border-zinc-700/50">
                               {conn.tag}
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-zinc-500 font-mono mt-0.5">
-                          {conn.user}<span className="text-zinc-600">@</span>{conn.host}<span className="text-zinc-600">:</span>{conn.port}
+                        <p className="text-sm text-muted-foreground font-mono mt-0.5">
+                          {conn.user}<span className="text-muted-foreground/50">@</span>{conn.host}<span className="text-muted-foreground/50">:</span>{conn.port}
                         </p>
                       </div>
                     </div>
@@ -219,23 +219,23 @@ export default function MainContent({ onCreateConnection }: MainContentProps) {
                     <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={(e) => { e.stopPropagation(); handleEdit(i); }}
-                        className="p-2 text-zinc-500 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
+                        className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary dark:hover:bg-zinc-800 rounded-lg transition-colors"
                         title="Edit Connection"
                       >
                         <Pencil className="w-4 h-4" />
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); setDeleteConfirmIndex(i); }}
-                        className="p-2 text-zinc-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                        className="p-2 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors"
                         title="Delete Connection"
                       >
                         <Trash className="w-4 h-4" />
                       </button>
-                      <div className="w-px h-6 bg-zinc-800 mx-3" />
+                      <div className="w-px h-6 bg-border dark:bg-zinc-800 mx-3" />
                       <button
                         onClick={(e) => { e.stopPropagation(); handleOpenWorkspace(i); }}
                         disabled={isOpeningWorkspace}
-                        className={`flex items-center gap-2 px-4 py-2 bg-zinc-200 text-zinc-900 hover:bg-white rounded-lg font-medium text-sm transition-colors shadow-sm ${isOpeningWorkspace ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white rounded-lg font-medium text-sm transition-colors shadow-sm ${isOpeningWorkspace ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         <Play className="w-3.5 h-3.5" />
                         {isOpeningWorkspace ? 'Connecting...' : 'Connect'}
@@ -243,18 +243,18 @@ export default function MainContent({ onCreateConnection }: MainContentProps) {
                     </div>
                   </div>
                 </ContextMenuTrigger>
-                <ContextMenuContent className="w-56 bg-[#1e1e1e] border-zinc-800 text-zinc-300">
-                  <ContextMenuItem disabled={isOpeningWorkspace} className="cursor-pointer focus:bg-zinc-800 focus:text-white" onClick={() => handleOpenWorkspace(i)}>
+                <ContextMenuContent className="w-56">
+                  <ContextMenuItem disabled={isOpeningWorkspace} className="cursor-pointer" onClick={() => handleOpenWorkspace(i)}>
                     <Play className="w-4 h-4 mr-2" />
                     {isOpeningWorkspace ? 'Connecting...' : 'Connect'}
                   </ContextMenuItem>
-                  <ContextMenuSeparator className="bg-zinc-800" />
-                  <ContextMenuItem className="cursor-pointer focus:bg-zinc-800 focus:text-white" onClick={() => handleEdit(i)}>
+                  <ContextMenuSeparator />
+                  <ContextMenuItem className="cursor-pointer" onClick={() => handleEdit(i)}>
                     <Pencil className="w-4 h-4 mr-2" />
                     Edit connection...
                   </ContextMenuItem>
-                  <ContextMenuSeparator className="bg-zinc-800" />
-                  <ContextMenuItem className="text-red-400 focus:text-red-300 focus:bg-red-950/50 cursor-pointer" onClick={() => setDeleteConfirmIndex(i)}>
+                  <ContextMenuSeparator />
+                  <ContextMenuItem className="text-destructive focus:text-destructive focus:bg-destructive/10 cursor-pointer" onClick={() => setDeleteConfirmIndex(i)}>
                     <Trash className="w-4 h-4 mr-2" />
                     Delete connection
                   </ContextMenuItem>
